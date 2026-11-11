@@ -1,7 +1,7 @@
 ---
 title: "Over ons"
 bovenkop: "Wie we zijn"
-description: "Wadlicht is een schadeverzekeraar uit Harlingen met 420 medewerkers. We begonnen in 1911 als onderlinge van vissers en havenbedrijven."
+description: "Wadlicht is een schadeverzekeraar uit Harlingen met 420 medewerkers. We begonnen in 1911 als onderlinge waarborgmaatschappij van vissers en havenbedrijven."
 ---
 
 ## Begonnen in de haven
