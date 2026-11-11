@@ -1,0 +1,77 @@
+{{ define "bodyclass" }}home{{ end }}
+{{ define "main" }}
+<section class="held">
+  <div class="held__licht" aria-hidden="true"></div>
+  <div class="held__binnen">
+    <p class="bovenkop">{{ .Params.held.bovenkop }}</p>
+    <h1>{{ .Params.held.titel }}</h1>
+    <p class="held__intro">{{ .Params.held.intro }}</p>
+    <div class="knoppen">
+      <a class="knop knop--licht" href="{{ "/verzekeringen/" | relURL }}">Bekijk onze verzekeringen</a>
+      <a class="knop knop--rand" href="{{ "/over-ons/" | relURL }}">Over Wadlicht</a>
+    </div>
+  </div>
+  <svg class="held__golf" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 Q 60 10 120 40 T 240 40 T 360 40 T 480 40 T 600 40 T 720 40 T 840 40 T 960 40 T 1080 40 T 1200 40 T 1320 40 T 1440 40 V80 H0 Z"/></svg>
+</section>
+
+<section class="blok">
+  <div class="binnen">
+    <h2 class="blok__titel">{{ .Params.beloften.titel }}</h2>
+    <div class="raster raster--3">
+      {{ range .Params.beloften.items }}
+      <article class="belofte">
+        <h3>{{ .titel }}</h3>
+        <p>{{ .tekst }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="blok blok--zand">
+  <div class="binnen">
+    <div class="blok__kop">
+      <h2 class="blok__titel">Verzekeringen</h2>
+      <a class="pijllink" href="{{ "/verzekeringen/" | relURL }}">Alle verzekeringen</a>
+    </div>
+    <div class="raster raster--2">
+      {{ range (site.GetPage "/verzekeringen").Pages.ByWeight }}
+        {{ partial "kaart-verzekering.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="blok">
+  <div class="binnen citaatblok">
+    <blockquote>
+      <p>{{ .Params.citaat.tekst }}</p>
+      <footer>{{ .Params.citaat.wie }}</footer>
+    </blockquote>
+    <a class="pijllink" href="{{ "/visie/" | relURL }}">Lees onze visie</a>
+  </div>
+</section>
+
+<section class="feiten" aria-label="Wadlicht in cijfers">
+  <div class="binnen raster raster--4">
+    <div class="feit"><span class="feit__getal">{{ site.Params.opgericht }}</span><span class="feit__label">opgericht als onderlinge in Harlingen</span></div>
+    <div class="feit"><span class="feit__getal">{{ site.Params.medewerkers }}</span><span class="feit__label">medewerkers, allemaal in Nederland</span></div>
+    <div class="feit"><span class="feit__getal">Schade</span><span class="feit__label">alleen schadeverzekeringen, daar zijn we goed in</span></div>
+    <div class="feit"><span class="feit__getal">DNB &amp; AFM</span><span class="feit__label">onder toezicht van beide toezichthouders</span></div>
+  </div>
+</section>
+
+<section class="blok">
+  <div class="binnen">
+    <div class="blok__kop">
+      <h2 class="blok__titel">Nieuws</h2>
+      <a class="pijllink" href="{{ "/nieuws/" | relURL }}">Al het nieuws</a>
+    </div>
+    <div class="raster raster--3">
+      {{ range first 3 (site.GetPage "/nieuws").Pages.ByDate.Reverse }}
+        {{ partial "kaart-nieuws.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

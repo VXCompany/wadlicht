@@ -426,3 +426,16 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# Hugo
+site/public/
+site/resources/_gen/
+.hugo_build.lock
+
+# Obsidian: persoonlijke werkruimte niet delen
+brein/.obsidian/workspace*.json
+brein/.obsidian/cache
+brein/.trash/
+
+# macOS
+.DS_Store

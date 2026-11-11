@@ -1,0 +1,5 @@
+<a class="kaart kaart--nieuws" href="{{ .RelPermalink }}">
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+  <h3>{{ .Title }}</h3>
+  <p>{{ .Description }}</p>
+</a>

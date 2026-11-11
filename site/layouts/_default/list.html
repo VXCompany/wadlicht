@@ -1,0 +1,23 @@
+{{ define "main" }}
+<section class="paginakop">
+  <div class="binnen">
+    {{ with .Params.bovenkop }}<p class="bovenkop">{{ . }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="paginakop__intro">{{ . }}</p>{{ end }}
+  </div>
+</section>
+<section class="blok">
+  <div class="binnen">
+    {{ with .Content }}<div class="tekst tekst--intro">{{ . }}</div>{{ end }}
+    {{ if eq .Section "nieuws" }}
+      <div class="raster raster--3">
+        {{ range .Pages.ByDate.Reverse }}{{ partial "kaart-nieuws.html" . }}{{ end }}
+      </div>
+    {{ else }}
+      <div class="raster raster--2">
+        {{ range .Pages.ByWeight }}{{ partial "kaart-verzekering.html" . }}{{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

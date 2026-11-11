@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 155 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" type="image/png" href="{{ "favicon.png" | relURL }}">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+<link rel="preload" href="{{ "fonts/inter-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/fraunces-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:image" content="{{ "images/wadlicht-icon-512.png" | absURL }}">
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="paginakop">
+  <div class="binnen">
+    {{ if eq .Section "nieuws" }}
+      <p class="bovenkop"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time></p>
+    {{ else }}
+      {{ with .Params.bovenkop }}<p class="bovenkop">{{ . }}</p>{{ end }}
+    {{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="paginakop__intro">{{ . }}</p>{{ end }}
+  </div>
+</section>
+<section class="blok">
+  <div class="binnen{{ with .Params.kenmerken }} met-zijbalk{{ end }}">
+    <article class="tekst">
+      {{ .Content }}
+    </article>
+    {{ with .Params.kenmerken }}
+    <aside class="zijbalk" aria-label="In het kort">
+      <h2>In het kort</h2>
+      <ul class="vinklijst">
+        {{ range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      <a class="knop knop--donker" href="{{ "/contact/" | relURL }}">Neem contact op</a>
+    </aside>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

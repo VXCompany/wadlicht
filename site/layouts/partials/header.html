@@ -1,0 +1,19 @@
+<div class="demobalk" role="note">Demo-omgeving: Wadlicht Verzekeringen is een fictief bedrijf.</div>
+<header class="kop">
+  <div class="kop__binnen">
+    <a class="merk" href="{{ "/" | relURL }}" aria-label="{{ site.Title }}, naar de homepage">
+      <img src="{{ "images/wadlicht-icon-96.png" | relURL }}" alt="" width="48" height="48">
+      <span class="merk__naam">Wadlicht<span class="merk__sub">Verzekeringen</span></span>
+    </a>
+    <nav class="hoofdmenu" aria-label="Hoofdmenu">
+      <ul>
+        {{ $huidig := . }}
+        {{ range site.Menus.main }}
+          {{ $actief := or ($huidig.IsMenuCurrent "main" .) ($huidig.HasMenuCurrent "main" .) }}
+          {{ with .Page }}{{ if or (eq $huidig.RelPermalink .RelPermalink) (and (not $huidig.IsHome) (hasPrefix $huidig.RelPermalink .RelPermalink)) }}{{ $actief = true }}{{ end }}{{ end }}
+          <li><a href="{{ .URL }}"{{ if $actief }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

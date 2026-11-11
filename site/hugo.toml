@@ -1,0 +1,54 @@
+baseURL = "https://www.wadlicht.example/"
+locale = "nl-NL"
+defaultContentLanguage = "nl"
+title = "Wadlicht Verzekeringen"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "Wadlicht Verzekeringen is een schadeverzekeraar uit Harlingen. Helder verzekerd, dichtbij geregeld."
+  plaats = "Harlingen"
+  provincie = "Friesland"
+  email = "info@wadlicht.example"
+  telefoon = "0517 000 000"
+  opgericht = 1911
+  medewerkers = 420
+  demoMelding = "Wadlicht Verzekeringen is een fictief bedrijf, gemaakt voor demonstratiedoeleinden door VX Company. Er worden geen echte verzekeringen aangeboden."
+
+[menus]
+  [[menus.main]]
+    name = "Verzekeringen"
+    pageRef = "/verzekeringen"
+    weight = 10
+  [[menus.main]]
+    name = "Over ons"
+    pageRef = "/over-ons"
+    weight = 20
+  [[menus.main]]
+    name = "Onze visie"
+    pageRef = "/visie"
+    weight = 30
+  [[menus.main]]
+    name = "Nieuws"
+    pageRef = "/nieuws"
+    weight = 40
+  [[menus.main]]
+    name = "Contact"
+    pageRef = "/contact"
+    weight = 50
+
+  [[menus.footer]]
+    name = "Privacy"
+    pageRef = "/privacy"
+    weight = 10
+  [[menus.footer]]
+    name = "Contact"
+    pageRef = "/contact"
+    weight = 20
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]

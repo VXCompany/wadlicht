@@ -1,0 +1,35 @@
+<footer class="voet">
+  <div class="voet__binnen">
+    <div class="voet__kolom">
+      <p class="voet__merk">Wadlicht Verzekeringen</p>
+      <p>{{ site.Params.plaats }}, {{ site.Params.provincie }}<br>
+      <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a><br>
+      {{ site.Params.telefoon }} (fictief)</p>
+    </div>
+    <div class="voet__kolom">
+      <p class="voet__kop">Verzekeringen</p>
+      <ul>
+        {{ range (site.GetPage "/verzekeringen").Pages.ByWeight }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+    <div class="voet__kolom">
+      <p class="voet__kop">Wadlicht</p>
+      <ul>
+        <li><a href="{{ "/over-ons/" | relURL }}">Over ons</a></li>
+        <li><a href="{{ "/visie/" | relURL }}">Onze visie</a></li>
+        <li><a href="{{ "/nieuws/" | relURL }}">Nieuws</a></li>
+        {{ range site.Menus.footer }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+      </ul>
+    </div>
+    <div class="voet__kolom">
+      <p class="voet__kop">Toezicht</p>
+      <p>Wadlicht staat onder toezicht van De Nederlandsche Bank (prudentieel) en de Autoriteit Financiële Markten (gedrag).</p>
+    </div>
+  </div>
+  <div class="voet__onder">
+    <p>{{ site.Params.demoMelding }}</p>
+    <p>&copy; {{ now.Year }} Wadlicht Verzekeringen</p>
+  </div>
+</footer>
