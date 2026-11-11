@@ -439,3 +439,6 @@ brein/.trash/
 
 # macOS
 .DS_Store
+
+# Obsidian ruis
+brein/.obsidian/workspace*.json
