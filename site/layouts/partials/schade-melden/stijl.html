@@ -1,0 +1,3 @@
+{{/* Eigen stylesheet van de app SchadeMelden (eigenaar Team Schade). Alleen geladen in layouts/schade-melden/, zodat main.css en de gedeelde partials van Team Marketing (TM-WA-05) ongewijzigd blijven. Zelfde patroon als main.css in head.html: minify, fingerprint en SRI. */}}
+{{ $css := resources.Get "css/schade-melden.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

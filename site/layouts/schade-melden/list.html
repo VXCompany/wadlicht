@@ -1,0 +1,24 @@
+{{/* Startpagina van de app SchadeMelden (eigenaar Team Schade, ADR-001). Gebruikt baseof.html met de kop, voet en huisstijl van de website (TM-WA-05). Geen link vanuit menu of homepage: dat gaat gepaard met Team Marketing. */}}
+{{ define "bodyclass" }}pagina app-schade-melden{{ end }}
+{{ define "main" }}
+{{ partial "schade-melden/stijl.html" . }}
+<section class="paginakop">
+  <div class="binnen">
+    {{ with .Params.bovenkop }}<p class="bovenkop">{{ . }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="paginakop__intro">{{ . }}</p>{{ end }}
+  </div>
+</section>
+<section class="blok">
+  <div class="binnen app">
+    {{ with .Content }}<div class="tekst">{{ . }}</div>{{ end }}
+    <h2>De stappen</h2>
+    <ol class="stappenlijst">
+      {{ range .Pages.ByWeight }}<li>{{ .Title }}</li>{{ end }}
+    </ol>
+    {{ with index .Pages.ByWeight 0 }}
+    <p><a class="knop knop--donker" href="{{ .RelPermalink }}">Begin met melden</a></p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

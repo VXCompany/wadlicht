@@ -1,0 +1,12 @@
+{{/* Voortgang: lijst van de vijf stappen. Parameter: de huidige pagina. */}}
+{{ $huidig := . }}
+<nav class="voortgang" aria-label="Stappen">
+  <ol>
+    {{ range (site.GetPage "/schade-melden").Pages.ByWeight }}
+      <li class="voortgang__stap{{ if eq .RelPermalink $huidig.RelPermalink }} voortgang__stap--huidig{{ else if lt .Params.stap $huidig.Params.stap }} voortgang__stap--klaar{{ end }}"{{ if eq .RelPermalink $huidig.RelPermalink }} aria-current="step"{{ end }}>
+        <span class="voortgang__nummer" aria-hidden="true">{{ .Params.stap }}</span>
+        <span class="voortgang__naam">{{ .Title }}</span>
+      </li>
+    {{ end }}
+  </ol>
+</nav>

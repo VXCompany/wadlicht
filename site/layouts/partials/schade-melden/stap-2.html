@@ -1,0 +1,42 @@
+{{/* Stap 2, wat is er gebeurd (PRD-SCH-GED-02). Alleen de velden, zonder logica. Er is geen <form>: niets wordt verstuurd. */}}
+<div class="velden">
+  <div class="veld">
+    <label for="soort-schade">Soort schade</label>
+    <select id="soort-schade" name="soort-schade">
+      <option value="">Kies een soort schade</option>
+    </select>
+  </div>
+  {{ partial "schade-melden/plaatshouder.html" (dict
+    "titel" "Keuzelijst soort schade"
+    "werkvorm" "Gepaard"
+    "regels" "PRD-SCH-GED-02, TP-API-02"
+    "tekst" "De keuzes hangen af van het producttype uit de polisverificatie. Welke soorten schade er per producttype zijn, staat nog niet in het brein."
+  ) }}
+  <div class="veld">
+    <label for="datum">Datum van de schade</label>
+    <input id="datum" name="datum" type="date" class="veld--kort">
+  </div>
+  <div class="veld">
+    <label for="plaats">Plaats</label>
+    <p class="veld__hulp" id="plaats-hulp">De plaats waar de schade is ontstaan.</p>
+    <input id="plaats" name="plaats" type="text" aria-describedby="plaats-hulp">
+  </div>
+  <div class="veld">
+    <label for="omschrijving">Wat is er gebeurd?</label>
+    <textarea id="omschrijving" name="omschrijving" rows="6"></textarea>
+  </div>
+  {{ partial "schade-melden/plaatshouder.html" (dict
+    "titel" "Maximale lengte omschrijving"
+    "werkvorm" "Gepaard"
+    "regels" "PRD-SCH-GED-02, TS-CR-04"
+    "tekst" "De maximale lengte komt uit de centrale configuratie, niet als vaste waarde in deze template."
+  ) }}
+</div>
+
+{{/* PLAATS VOOR DE LETSELVRAAG — Mens-geleid (ORG-AI-03, PRD-SCH-INV-04), niet door de agent bouwen */}}
+{{ partial "schade-melden/plaatshouder.html" (dict
+  "titel" "Letselvraag"
+  "werkvorm" "Mens-geleid"
+  "regels" "ORG-AI-03, ORG-PRV-02, ORG-PRV-03, PRD-SCH-INV-04, PRD-SCH-GED-02"
+  "tekst" "Hier komt de vraag of iemand gewond is, met de afhandeling van een letselindicatie. Wordt gebouwd door de engineers, niet door de agent."
+) }}

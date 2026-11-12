@@ -1,0 +1,15 @@
+{{/* Vorige en volgende stap, als gewone links. Er wordt niets verstuurd. */}}
+{{ $stappen := (site.GetPage "/schade-melden").Pages.ByWeight }}
+{{ $nu := .Params.stap }}
+<nav class="stappennav" aria-label="Naar een andere stap">
+  {{ $vorige := where $stappen "Params.stap" (sub $nu 1) }}
+  {{ with index $vorige 0 }}
+    <a class="knop knop--rand-donker" href="{{ .RelPermalink }}">Vorige stap</a>
+  {{ else }}
+    <a class="knop knop--rand-donker" href="{{ (site.GetPage "/schade-melden").RelPermalink }}">Terug</a>
+  {{ end }}
+  {{ $volgende := where $stappen "Params.stap" (add $nu 1) }}
+  {{ with index $volgende 0 }}
+    <a class="knop knop--donker" href="{{ .RelPermalink }}">Volgende stap</a>
+  {{ end }}
+</nav>

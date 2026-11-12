@@ -1,0 +1,24 @@
+{{/* Stap 1, polis (PRD-SCH-GED-01). Alleen de velden, zonder logica. Er is geen <form>: niets wordt verstuurd. */}}
+<div class="velden">
+  <div class="veld">
+    <label for="polisnummer">Polisnummer</label>
+    <p class="veld__hulp" id="polisnummer-hulp">Je vindt je polisnummer op je polisblad.</p>
+    <input id="polisnummer" name="polisnummer" type="text" autocomplete="off" spellcheck="false" aria-describedby="polisnummer-hulp">
+  </div>
+  <div class="veld">
+    <label for="postcode">Postcode</label>
+    <input id="postcode" name="postcode" type="text" autocomplete="postal-code" class="veld--kort">
+  </div>
+  <div class="veld">
+    <label for="geboortedatum">Geboortedatum</label>
+    <input id="geboortedatum" name="geboortedatum" type="date" autocomplete="bday" class="veld--kort">
+  </div>
+</div>
+
+{{/* PLAATS VOOR DE POLISVERIFICATIE — Mens-geleid (ORG-AI-03, ORG-SEC-01, PRD-SCH-GED-01, PRD-SCH-INV-01), niet door de agent bouwen */}}
+{{ partial "schade-melden/plaatshouder.html" (dict
+  "titel" "Polisverificatie"
+  "werkvorm" "Mens-geleid"
+  "regels" "ORG-AI-03, ORG-SEC-01, PRD-SCH-GED-01, PRD-SCH-INV-01, PRD-SCH-API-01"
+  "tekst" "Hier komt de controle van polisnummer, postcode en geboortedatum via de API, met de neutrale melding bij een onbekende combinatie en de doorverwijzing bij een polis die niet actief is. Wordt gebouwd door de engineers, niet door de agent."
+) }}

@@ -1,0 +1,9 @@
+{{/* Stap 3, foto's (PRD-SCH-GED-03). Geen uploadveld en geen uploadlogica in deze stap. */}}
+
+{{/* PLAATS VOOR DE FOTO-UPLOAD — minimaal Gepaard (TS-WA-03, PRD-SCH-INV-07, PRD-SCH-INV-08), gebouwd door de engineers, niet door de agent. Limieten en bestandstypen komen uit één plek in de configuratie (TS-CR-04), nooit als tekst of constante in deze template. */}}
+{{ partial "schade-melden/plaatshouder.html" (dict
+  "titel" "Foto-upload"
+  "werkvorm" "Minimaal gepaard"
+  "regels" "TS-WA-03, TS-CR-04, PRD-SCH-GED-03, PRD-SCH-INV-03, PRD-SCH-INV-07, PRD-SCH-INV-08"
+  "tekst" "Hier komt het toevoegen van foto's. Het aantal foto's, de maximale grootte en de toegestane bestandstypen komen uit de centrale configuratie, ook in de teksten voor de klant."
+) }}

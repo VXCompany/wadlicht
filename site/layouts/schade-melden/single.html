@@ -1,0 +1,19 @@
+{{/* Eén stap van de app SchadeMelden (PRD-SCH-GED-01 t/m 05). Elke stap op een eigen scherm. Zonder logica en zonder JavaScript: velden staan niet in een <form>, er wordt niets verstuurd. De inhoud per stap staat in partials/schade-melden/stap-N.html. */}}
+{{ define "bodyclass" }}pagina app-schade-melden{{ end }}
+{{ define "main" }}
+{{ partial "schade-melden/stijl.html" . }}
+<section class="paginakop paginakop--app">
+  <div class="binnen app">
+    <p class="bovenkop">Schade melden, stap {{ .Params.stap }} van {{ len (site.GetPage "/schade-melden").Pages }}</p>
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+<section class="blok blok--app">
+  <div class="binnen app">
+    {{ partial "schade-melden/voortgang.html" . }}
+    {{ with .Content }}<div class="tekst">{{ . }}</div>{{ end }}
+    {{ partial (printf "schade-melden/stap-%d.html" .Params.stap) . }}
+    {{ partial "schade-melden/stappennav.html" . }}
+  </div>
+</section>
+{{ end }}

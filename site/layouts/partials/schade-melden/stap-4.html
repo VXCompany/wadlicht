@@ -1,0 +1,32 @@
+{{/* Stap 4, controleren (PRD-SCH-GED-04). Statisch overzicht zonder ingevulde gegevens. */}}
+<div class="overzicht">
+  <section class="overzicht__blok" aria-labelledby="overzicht-polis">
+    <h2 id="overzicht-polis">Je polis</h2>
+    <dl>
+      <dt>Polisnummer</dt><dd>Nog niet ingevuld</dd>
+      <dt>Postcode</dt><dd>Nog niet ingevuld</dd>
+      <dt>Geboortedatum</dt><dd>Nog niet ingevuld</dd>
+    </dl>
+  </section>
+  <section class="overzicht__blok" aria-labelledby="overzicht-gebeurd">
+    <h2 id="overzicht-gebeurd">Wat is er gebeurd?</h2>
+    <dl>
+      <dt>Soort schade</dt><dd>Nog niet ingevuld</dd>
+      <dt>Datum</dt><dd>Nog niet ingevuld</dd>
+      <dt>Plaats</dt><dd>Nog niet ingevuld</dd>
+      <dt>Omschrijving</dt><dd>Nog niet ingevuld</dd>
+    </dl>
+  </section>
+  <section class="overzicht__blok" aria-labelledby="overzicht-fotos">
+    <h2 id="overzicht-fotos">Foto's</h2>
+    <p>Nog geen foto's toegevoegd.</p>
+  </section>
+</div>
+
+{{/* PLAATS VOOR HET VERSTUREN — Gepaard (PRD-SCH-API-02, PRD-SCH-API-03, PRD-SCH-INV-02, PRD-SCH-INV-03), gebouwd door de engineers, niet door de agent */}}
+{{ partial "schade-melden/plaatshouder.html" (dict
+  "titel" "Versturen"
+  "werkvorm" "Gepaard"
+  "regels" "PRD-SCH-GED-04, PRD-SCH-API-02, PRD-SCH-API-03, PRD-SCH-INV-02, PRD-SCH-INV-03"
+  "tekst" "Hier komen het ingevulde overzicht en de knop om te versturen. De melding wordt precies één keer geregistreerd en de klant gaat pas naar de bevestiging als alles is opgeslagen."
+) }}

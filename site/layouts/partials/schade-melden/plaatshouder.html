@@ -1,0 +1,7 @@
+{{/* Zichtbare plaatshouder voor ontwikkelaars. Geen klanttekst. Parameters: titel, werkvorm, regels, tekst. */}}
+<aside class="plaatshouder" aria-label="Plaatshouder voor ontwikkelaars: {{ .titel }}">
+  <p class="plaatshouder__label">Plaatshouder voor ontwikkelaars, niet voor klanten</p>
+  <p class="plaatshouder__titel">{{ .titel }}</p>
+  <p>Werkvorm: <strong>{{ .werkvorm }}</strong>. Regels: {{ .regels }}.</p>
+  <p>{{ .tekst }}</p>
+</aside>
