@@ -4,29 +4,30 @@ Hoe de Slack-werkruimte en Claude Tag zijn ingericht voor de demo van De Denkfab
 
 > Claude Tag is in publieke bèta. Menu's en knoppen kunnen veranderen. Controleer bij twijfel de [documentatie van Claude Tag](https://claude.com/docs/claude-tag/admins/setup-overview.md).
 
-## Verdeling van de demo
+## De twee demo's
 
-| Onderdeel | Waar | Waarom |
+Beide demo's lopen live in Slack. Het draaiboek met alle berichten staat onderaan dit document.
+
+| Demo | Kanaal | Wat het laat zien |
 |---|---|---|
-| Breindemo's: vragen, verwerken, controleren | Lokaal in Claude Code, met Obsidian ernaast | Snel, en wijzigingen zijn direct zichtbaar in de bestanden en de graaf |
-| Feature SchadeMelden, escalatie, bouwen, verifiëren | Slack met Claude Tag | Aparte kanalen laten zien dat agents collega's zijn en dat de fabriek op mensen wacht |
+| 1. Mag de fotolimiet omhoog? | `#wadlicht-intake` | De agent vindt de regels in het brein en weet waarom ze bestaan |
+| 2. SchadeMelden | `#wadlicht-intake`, daarna `#wadlicht-ontwikkeling` | Escalatie bij gezondheidsgegevens, stemming door de zaal, en de engineer die het werk verdeelt |
 
 ## Rollen
 
 | Wie | Rol in de demo |
 |---|---|
-| Yuri | Product owner en beheerder van het brein |
-| Dimitri | Architect |
-| Derde collega | Tech lead: bevestigt de werkvorm (ORG-AI-01) en pairt met de agent |
+| Yuri | Product owner, in demo 2 daarna engineer |
+| Dimitri | Architect, en engineer bij het verdelen van het werk |
 | Zaal | Menselijke experts: stemmen via Mentimeter bij de escalatie |
 
 ## Kanalen
 
 | Kanaal | Agentrol | Gebruikt bij |
 |---|---|---|
-| `#wadlicht-intake` | Orkestratie: werkvorm bepalen en escaleren | Intentie SchadeMelden, escalatie, stemming |
-| `#wadlicht-ontwikkeling` | Development agent | Bouwen |
-| `#wadlicht-verificatie` | Verificatie-agent | Verifiëren, randgeval uit de zaal |
+| `#wadlicht-intake` | Orkestratie: werkvorm bepalen en escaleren | Demo 1, demo 2 tot en met de stemming |
+| `#wadlicht-ontwikkeling` | Development agent | Demo 2: het werk verdelen en stap 1 |
+| `#wadlicht-verificatie` | Verificatie-agent | Niet in de demo; optioneel, voor vragen na afloop |
 
 Maak de kanalen in Slack en nodig Claude in elk kanaal uit met `/invite @Claude`. Pas dan verschijnen ze in de admin-instellingen.
 
@@ -108,6 +109,79 @@ En in dezelfde thread:
 ## Beveiliging van main
 
 Kanaalinstructies zijn richtlijnen, geen harde blokkade. Zet daarom in GitHub branch protection op `main`: alleen via pull request, met minimaal één review. Claude opent pull requests als de Claude GitHub App. Dat beschermt ook de beginstand van de demo (tag `demo-start`).
+
+## Draaiboek: de berichten
+
+Begin elke demo in een **nieuwe thread**. Noem `VXCompany/wadlicht` in het eerste bericht van elke thread, anders kloont de sessie de repository niet.
+
+### Demo 1, `#wadlicht-intake`
+
+```text
+@Claude Vraag over VXCompany/wadlicht: mag ik de maximale fotogrootte voor de upload in SchadeMelden ophogen van 15 naar 20 MB? En kan een agent dat zelfstandig doen?
+```
+
+Verwacht: niet zelfstandig. TS-WA-03 (uploads minimaal gepaard), PRD-SCH-INV-07 (overal dezelfde limiet) en incident INC-2026-041 als reden.
+
+### Demo 2, `#wadlicht-intake`: de intentie (product owner)
+
+```text
+@Claude Nieuwe intentie voor VXCompany/wadlicht.
+
+Als product owner wil ik dat klanten een schade kunnen melden zonder in te loggen, ook op hun telefoon. Voeg de app SchadeMelden toe aan de website, zoals beschreven op de productpagina's in het brein.
+
+Wat ik verwacht van de eerste versie:
+- de vijf stappen uit schademelden-gedrag
+- een bevestiging met meldingsnummer per e-mail
+- alleen particuliere verzekeringen
+
+Bepaal eerst welke regels gelden en welke werkvorm dit krijgt. Begin nog niet met bouwen.
+```
+
+Verwacht: Mens-geleid door ORG-AI-03 (de app legt vast of er iemand gewond is). De agent tagt de architect en de product owner en wacht.
+
+### Demo 2, `#wadlicht-intake`: de architect (Dimitri)
+
+```text
+@Claude Eens met Mens-geleid. ADR-001 blijft het uitgangspunt. Voor de letselindicatie wil ik eerst weten: waar slaan we die op, wie kan haar zien (PRD-SCH-INV-04), en blijft alles in de EU (ORG-PRV-05)? Zet de opties op een rij, dan beslissen we.
+```
+
+### Demo 2, `#wadlicht-intake`: het besluit na de stemming
+
+A, goedkeuren:
+
+```text
+@Claude Besluit van de menselijke experts in de zaal: goedgekeurd, werkvorm Mens-geleid. Leg het besluit vast met wie het nam en zet het werk klaar voor #wadlicht-ontwikkeling.
+```
+
+B, goedkeuren met extra eis:
+
+```text
+@Claude Besluit van de menselijke experts in de zaal: goedgekeurd, werkvorm Mens-geleid, met als extra eis: [eis uit de zaal]. Leg het besluit vast met wie het nam en neem de eis op in de opdracht voor #wadlicht-ontwikkeling.
+```
+
+C, afkeuren (dan stopt de demo hier):
+
+```text
+@Claude Besluit van de menselijke experts in de zaal: nog niet bouwen. Terug naar de product owner. Leg het besluit vast en zet op een rij wat er eerst duidelijk moet zijn.
+```
+
+Kopieer daarna de link naar het besluitbericht (in Slack: **Kopieer link**). Die heb je nodig in het ontwikkelkanaal: een sessie in een ander kanaal ziet de intake-thread niet vanzelf.
+
+### Demo 2, `#wadlicht-ontwikkeling`: bouwen (Yuri als engineer)
+
+```text
+@Claude Ik ben de engineer en ga beginnen met bouwen aan SchadeMelden in VXCompany/wadlicht. Het besluit uit #wadlicht-intake: [link naar de thread]
+```
+
+```text
+@Claude Kun je samen met mij het totale werk even verdelen?
+```
+
+```text
+@Claude Ik wil graag dat je stap 1 doet, maar Dimitri en ik doen de rest.
+```
+
+Hoe dit verder loopt, is niet belangrijk voor het verhaal. Het punt: de engineer verdeelt het werk, de agent doet een afgebakend stuk.
 
 ## Na het oefenen
 
