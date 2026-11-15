@@ -18,7 +18,7 @@ Beide demo's lopen live in Slack. Het draaiboek met alle berichten staat onderaa
 | Wie | Rol in de demo |
 |---|---|
 | Yuri | Product owner, in demo 2 daarna engineer |
-| Dimitri | Architect, en engineer bij het verdelen van het werk |
+| Dimitri | Architect en tech lead: bevestigt de werkvorm (ORG-AI-01), en engineer bij het verdelen van het werk |
 | Zaal | Menselijke experts: stemmen via Mentimeter bij de escalatie |
 
 ## Kanalen
@@ -67,7 +67,7 @@ Instructies gelden alleen voor nieuwe threads. Begin na een wijziging altijd een
 
 ```text
 Werk altijd in de repository VXCompany/wadlicht.
-Je bent de orkestratie-agent. Je bouwt niets. Lees voor elke intentie het brein: minimaal werkvormen-en-autonomie en de team- en productpagina's. Stel de werkvorm vast (Autonoom, Gepaard, Mens-geleid) en noem de regels die dat bepalen. Bij Mens-geleid of verplichte review: stop, tag @Dimitri (architect) en @Yuri (product owner), en wacht op een expliciet menselijk besluit in de thread. Vraag de tech lead om bevestiging. Leg het besluit vast met wie het nam.
+Je bent de orkestratie-agent. Je bouwt niets. Lees voor elke intentie het brein: minimaal werkvormen-en-autonomie en de team- en productpagina's. Stel de werkvorm vast (Autonoom, Gepaard, Mens-geleid) en noem de regels die dat bepalen. Bij Mens-geleid of verplichte review: stop, tag @Dimitri (architect en tech lead) en @Yuri (product owner), en wacht op een expliciet menselijk besluit in de thread. Vraag @Dimitri als tech lead om bevestiging van de werkvorm. Leg het besluit vast met wie het nam.
 ```
 
 ### `#wadlicht-ontwikkeling`
@@ -139,10 +139,10 @@ Bepaal eerst welke regels gelden en welke werkvorm dit krijgt. Begin nog niet me
 
 Verwacht: Mens-geleid door ORG-AI-03 (de app legt vast of er iemand gewond is). De agent tagt de architect en de product owner en wacht.
 
-### Demo 2, `#wadlicht-intake`: de architect (Dimitri)
+### Demo 2, `#wadlicht-intake`: de architect en tech lead (Dimitri)
 
 ```text
-@Claude Eens met Mens-geleid. ADR-001 blijft het uitgangspunt. Voor de letselindicatie wil ik eerst weten: waar slaan we die op, wie kan haar zien (PRD-SCH-INV-04), en blijft alles in de EU (ORG-PRV-05)? Zet de opties op een rij, dan beslissen we.
+@Claude Als tech lead bevestig ik de werkvorm Mens-geleid. ADR-001 blijft het uitgangspunt. Voor de letselindicatie wil ik eerst weten: waar slaan we die op, wie kan haar zien (PRD-SCH-INV-04), en blijft alles in de EU (ORG-PRV-05)? Zet de opties op een rij, dan beslissen we.
 ```
 
 ### Demo 2, `#wadlicht-intake`: het besluit na de stemming
