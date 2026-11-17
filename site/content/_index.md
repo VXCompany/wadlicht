@@ -16,5 +16,5 @@ beloften:
       tekst: "Al meer dan een eeuw keren we uit als het nodig is. We staan onder toezicht van De Nederlandsche Bank en de AFM."
 citaat:
   tekst: "Een vuurtoren beweegt niet mee met elke golf. Hij staat er, ook als het stormt. Zo willen wij er zijn voor onze klanten."
-  wie: "Directie Wadlicht Verzekeringen"
+  wie: "Directie Wadlicht Verzekeringen."
 ---
