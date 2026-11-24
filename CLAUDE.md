@@ -8,7 +8,7 @@ Wadlicht Verzekeringen is een fictieve schadeverzekeraar uit Harlingen (420 mede
 |---|---|---|
 | `site/` | Publieke website, Hugo, gehost op Azure Static Web Apps | Team Marketing |
 | `brein/` | Het Gedeelde Brein: kennis op organisatie-, team- en productniveau (Obsidian-vault) | Per pagina, zie `brein/CLAUDE.md` |
-| `.claude/skills/` | Operaties op het brein: `/brein-ingest`, `/brein-query`, `/brein-lint` | AI Governance Board |
+| `.claude/skills/` | Operaties op het brein: `/brein-ingest`, `/brein-query`, `/brein-lint`; intake: `/invest-toets` | AI Governance Board |
 | `.github/workflows/` | Bouwen en publiceren van de website | Team Marketing |
 
 ## Werken in deze repository

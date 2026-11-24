@@ -1,6 +1,6 @@
 # Index van het Gedeelde Brein
 
-Catalogus van alle wikipagina's. Wordt bijgewerkt door elke operatie (ingest, query, lint). Laatst bijgewerkt: 2026-11-11.
+Catalogus van alle wikipagina's. Wordt bijgewerkt door elke operatie (ingest, query, lint). Laatst bijgewerkt: 2026-11-24.
 
 ## Organisatie
 
@@ -32,6 +32,8 @@ Catalogus van alle wikipagina's. Wordt bijgewerkt door elke operatie (ingest, qu
 | [[werkafspraken-team-schade]] | richtinggevend | TS-WA-01 t/m 05 | Reviews, invariant-tests, uploads gepaard, DoD |
 | [[codeerrichtlijnen-team-schade]] | richtinggevend | TS-CR-01 t/m 06 | .NET 10, isolated, xUnit, limieten op één plek |
 | [[incidenten-team-schade]] | beschrijvend | INC-2026-041 | Meldingen zonder foto's, 20 oktober 2026 |
+| [[intake-invest-team-schade]] | richtinggevend | TS-IT-01 t/m 06 | INVEST-toets voor intenties; Testable en Small bindend |
+| [[testscenarios-team-schade]] | richtinggevend | TS-SC-01 t/m 08 | Gherkin in het Nederlands, regel-ID als tag, normaal en grens |
 
 ## Team Polis
 

@@ -6,7 +6,7 @@ eigenaar: Team Schade
 team: team-schade
 bronnen:
   - "[[2026-10-24-retro-notulen]]"
-bijgewerkt: 2026-10-25
+bijgewerkt: 2026-11-24
 review_voor: 2027-04-01
 tags: [niveau/team, team/schade]
 ---
@@ -32,6 +32,8 @@ Team Schade bouwt en beheert de digitale schadebehandeling: het oude schadeformu
 - [[werkafspraken-team-schade]] (richtinggevend)
 - [[codeerrichtlijnen-team-schade]] (richtinggevend)
 - [[incidenten-team-schade]] (beschrijvend)
+- [[intake-invest-team-schade]] (richtinggevend)
+- [[testscenarios-team-schade]] (richtinggevend)
 
 ## Producten
 

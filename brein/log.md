@@ -54,3 +54,9 @@ Chronologisch. Alleen aanvullen, nooit wijzigen. Formaat: `## [datum] operatie |
 
 ## [2026-11-11] update | website opgeleverd
 - Bijgewerkt: [[website-wadlicht]] met de opbouw van de eerste versie van de Hugo-site.
+
+## [2026-11-24] update | afspraken voor intake en testscenario's Team Schade
+- Nieuw: [[intake-invest-team-schade]] (richtinggevend), TS-IT-01 t/m 06. Gebruikt door de nieuwe skill `invest-toets`.
+- Nieuw: [[testscenarios-team-schade]] (richtinggevend), TS-SC-01 t/m 08.
+- Op verzoek aangemaakt voor de demo, zonder voorstelroute. Een bronnotitie in `raw/team-schade/` ontbreekt nog; de lint meldt dit mogelijk.
+- Bijgewerkt: [[team-schade]] (kennis van dit team).

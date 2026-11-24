@@ -10,7 +10,7 @@ Demo-repository van **Wadlicht Verzekeringen**, een fictieve schadeverzekeraar u
 |---|---|
 | [`site/`](site/) | De publieke website: Hugo, eigen thema, Azure Static Web Apps |
 | [`brein/`](brein/) | Het Gedeelde Brein: organisatie, Team Marketing, Team Schade, Team Polis en product SchadeMelden. Open als vault in Obsidian. |
-| [`.claude/skills/`](.claude/skills/) | `/brein-ingest`, `/brein-query`, `/brein-lint` voor Claude Code |
+| [`.claude/skills/`](.claude/skills/) | `/brein-ingest`, `/brein-query`, `/brein-lint` en `/invest-toets` voor Claude Code |
 | [`.github/workflows/`](.github/workflows/) | Bouwen en publiceren naar Azure Static Web Apps |
 | [`docs/`](docs/) | Inrichting van de demo: [Claude Tag en Slack](docs/demo-setup-claude-tag.md), [spiekbriefje git](docs/spiekbriefje-git-demo.md) |
 
