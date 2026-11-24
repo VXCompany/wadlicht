@@ -4,14 +4,15 @@ Hoe de Slack-werkruimte en Claude Tag zijn ingericht voor de demo van De Denkfab
 
 > Claude Tag is in publieke bèta. Menu's en knoppen kunnen veranderen. Controleer bij twijfel de [documentatie van Claude Tag](https://claude.com/docs/claude-tag/admins/setup-overview.md).
 
-## De twee demo's
+## De demo's
 
-Beide demo's lopen live in Slack. Het draaiboek met alle berichten staat onderaan dit document.
+De demo's lopen live in Slack. Het draaiboek met alle berichten staat onderaan dit document.
 
 | Demo | Kanaal | Wat het laat zien |
 |---|---|---|
 | 1. Mag de fotolimiet omhoog? | `#wadlicht-intake` | De agent vindt de regels in het brein en weet waarom ze bestaan |
 | 2. SchadeMelden | `#wadlicht-intake`, daarna `#wadlicht-ontwikkeling` | Escalatie bij gezondheidsgegevens, stemming door de zaal, en de engineer die het werk verdeelt |
+| 3. Van user story naar testscenario | `#wadlicht-intake` | INVEST-toets, regels uit het brein, werkvorm, en testscenario's in Gherkin met regel-ID's |
 
 ## Rollen
 
@@ -67,8 +68,16 @@ Instructies gelden alleen voor nieuwe threads. Begin na een wijziging altijd een
 
 ```text
 Werk altijd in de repository VXCompany/wadlicht.
-Je bent de orkestratie-agent. Je bouwt niets. Lees voor elke intentie het brein: minimaal werkvormen-en-autonomie en de team- en productpagina's. Stel de werkvorm vast (Autonoom, Gepaard, Mens-geleid) en noem de regels die dat bepalen. Bij Mens-geleid of verplichte review: stop, tag @Dimitri (architect en tech lead) en @Yuri (product owner), en wacht op een expliciet menselijk besluit in de thread. Vraag @Dimitri als tech lead om bevestiging van de werkvorm. Leg het besluit vast met wie het nam.
+Je bent de orkestratie-agent. Je bouwt niets.
+Volgorde bij een nieuwe intentie (een bericht met "Nieuwe intentie"):
+1. Voer eerst de skill invest-toets uit. Meld de uitkomst met de regel-ID's (TS-IT). Bij "Verduidelijking nodig" of "Opsplitsen": stel je vragen of je voorstel in de thread en raadpleeg het brein nog niet. Toets opnieuw na het antwoord. Sla de toets nooit over.
+2. Pas als de intentie geschikt is: lees het brein (brein-query), minimaal werkvormen-en-autonomie en de team- en productpagina's. Stel de werkvorm vast (Autonoom, Gepaard, Mens-geleid) en noem de regels die dat bepalen.
+3. Bij Mens-geleid of verplichte review: stop, tag @Dimitri (architect en tech lead) en @Yuri (product owner), en wacht op een expliciet menselijk besluit in de thread. Vraag @Dimitri als tech lead om bevestiging van de werkvorm. Leg het besluit vast met wie het nam.
+4. Vraagt iemand om testscenario's: schrijf ze volgens testscenarios-team-schade (Gherkin, Nederlands, regel-ID als tag, normaal en grens). Verzin geen waarden die niet in het brein of de intentie staan; meld ontbrekende kennis als hiaat.
+Een vraag (geen nieuwe intentie) beantwoord je direct met brein-query, zonder INVEST-toets.
 ```
+
+> **Let op bij demo 2.** De intentie van demo 2 omvat de hele app SchadeMelden. Met de INVEST-toets is de kans groot dat de agent "Opsplitsen" adviseert (TS-IT-02). Dat kan een mooi moment zijn, maar het verandert het verloop. Oefen demo 2 opnieuw na het wijzigen van deze instructies.
 
 ### `#wadlicht-ontwikkeling`
 
@@ -182,6 +191,50 @@ Kopieer daarna de link naar het besluitbericht (in Slack: **Kopieer link**). Die
 ```
 
 Hoe dit verder loopt, is niet belangrijk voor het verhaal. Het punt: de engineer verdeelt het werk, de agent doet een afgebakend stuk.
+
+### Demo 3, `#wadlicht-intake`: van user story naar testscenario
+
+Volgt de vijf stappen van de denkfabriek: intentie, kennis, beslissingen, bewijs, leren.
+
+**1. Intentie, bewust vaag** (product owner):
+
+```text
+@Claude Nieuwe intentie voor VXCompany/wadlicht.
+
+Als klant wil ik foto's uploaden bij mijn schademelding in SchadeMelden, zodat mijn claim sneller wordt afgehandeld.
+```
+
+Verwacht: INVEST-toets "Verduidelijking nodig". TS-IT-01 (Testable) voldoet niet: geen grenzen en geen verwacht resultaat. De agent stelt gerichte vragen en raadpleegt het brein nog niet.
+
+Zeg: "De agent kijkt eerst of het verzoek helder en toetsbaar genoeg is, voordat hij iets gaat bouwen."
+
+**2. Verduidelijking** (product owner, in dezelfde thread):
+
+```text
+@Claude Een klant mag maximaal 10 foto's toevoegen van elk maximaal 15 MB, in JPEG, PNG of HEIC. Bij meer foto's of een te grote foto ziet de klant een duidelijke melding en wordt de foto niet toegevoegd.
+```
+
+Verwacht: INVEST-toets "Geschikt". Daarna haalt de agent de regels op: PRD-SCH-GED-03, PRD-SCH-INV-07 (limieten in elke laag gelijk), PRD-SCH-INV-03 (bevestiging pas na opslag), PRD-SCH-INV-08 en ORG-SEC-05 (scannen), en incident INC-2026-041 als achtergrond. Werkvorm: Gepaard door TS-WA-03 (uploads nooit autonoom). De agent vraagt @Dimitri om bevestiging.
+
+Zeg: "Nu haalt hij op wat de organisatie al weet, en hij laat precies zien uit welke regel dat komt." En bij de werkvorm: "De AI stelt voor, maar vaste regels bepalen de ondergrens."
+
+**3. Bevestiging** (Dimitri als tech lead):
+
+```text
+@Claude Als tech lead bevestig ik de werkvorm Gepaard.
+```
+
+**4. Bewijs** (product owner):
+
+```text
+@Claude Maak de testscenario's voor deze intentie.
+```
+
+Verwacht: Gherkin in het Nederlands, elk scenario met een regel-ID als tag (TS-SC-02), per regel een normaal en een grensgeval (TS-SC-03), en de acceptatiecriteria uit de intentie met `@intentie` (TS-SC-04). Vergelijk met het voorbeeld in `brein/wiki/teams/schade/testscenarios-team-schade.md`.
+
+Zeg: "Elke regel wordt een controle, en je ziet bij elk scenario uit welke regel het komt."
+
+**5. Leren:** wijs in de uitvoer op een hiaat dat de agent meldt, als hij dat doet (bijvoorbeeld een ontbrekende waarde, TS-SC-07). Zeg: "Wat hij nieuw ontdekt, stelt hij voor aan het brein, en een mens beslist."
 
 ## Na het oefenen
 
